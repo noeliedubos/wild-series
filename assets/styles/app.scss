@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Bevan&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bevan&family=Work+Sans:wght@100;200;300;400&display=swap');
+// assets/styles/global.scss
+// customize some Bootstrap variables
+
+$primary: #191F25;
+$secondary: #82E8FF;
+
+@import "~bootstrap/scss/bootstrap";
+// the ~ allows you to reference things in node_modules
+*, *::after,*::before{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Bevan', cursive;
+    font-family: 'Work Sans', sans-serif;
+}
+.banner {
+    max-width: 100%;
+}    
+
+.navbar-brand {
+    font-family: 'Bevan', cursive;
+}
+.navbar > .container-fluid > .navbar-dark-color{
+    color: $secondary;
+}
+
+nav{
+    font-family: 'Work Sans', sans-serif;
+    background-color: $primary;
+}
+
+h1{
+    font-family: 'Bevan', cursive;
+
+}
