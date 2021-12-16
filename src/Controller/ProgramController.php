@@ -31,18 +31,25 @@ class ProgramController extends AbstractController
     }
 
     /**
-      * @Route("/{id}", methods={"GET"}, requirements={"id"="\d+"}, name="show")
+     * Getting a program by id
+      * @Route("/show/{id<^[0-9]+$>}", name="show")
+      * @return Response
       */
     public function show(int $id): Response
     {
+        $program = $this->getDoctrine()
+            ->getRepository(Program::class)
+            ->findOneBy(['id' => $id]);
+
+        if (!$program) {
+            throw $this->createNotFoundException(
+                'No program with id : '.$id.' found in program\'s table/.'
+            );
+        }
         return $this->render('program/show.html.twig', [
-            'website' => 'Wild Séries',
-            'id' => $id,
+            'program' => $program,
         ]);
 
     }
 
-    /**
-     * @Route("/", name="program_index")
-     */
 }
