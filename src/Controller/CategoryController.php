@@ -8,7 +8,7 @@ use App\Repository\ProgramRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Doctrine\ORM\EntityManagerInterface;
     /**
     * @Route("/category", name="category_")
     */
@@ -18,12 +18,14 @@ class CategoryController extends AbstractController
      * @Route("/", name="index")
      * @return Response
      */
-    public function index(CategoryRepository $categoryRepository): Response
+    public function index(): Response
     {
-        $categories = $categoryRepository->findAll();
+        $categories = $this->getDoctrine()
+            ->getRepository(Category::class)
+            ->findAll();
 
         return $this->render('category/index.html.twig', [
-            'categories' => '$categories'
+            'categories' => $categories
         ]);
     }
 
@@ -40,7 +42,7 @@ class CategoryController extends AbstractController
                 'Aucune catégorie nommée ' . $categoryName
             );
         }
-        $programs = $programRepository->findByCategory($category, ['id' => 'asc'], 3);
+        $programs = $programRepository->findByCategory($category, ['id' => 'desc'], 5);
 
         return $this->render('category/show.html.twig', [
             'category' => $category,

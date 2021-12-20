@@ -15,8 +15,6 @@ class DefaultController extends AbstractController
 
     public function index(): Response
     {
-        return $this->render('templates/category/index.html.twig', [
-            'default' => 'Le meilleur de vos séries pour vous!',
-         ]);
+        return $this->render('index.html.twig');
     }
 }
