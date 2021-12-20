@@ -6,10 +6,14 @@
 <h1>{{ category.name }}</h1>
 <ul>
 {% for program in programs %}
+
+<h2> <a href="{{ path("program_show", { id: program.id }) }}" </a> {{ program.id}} / {{ program.title }}</h2>
 <li>
-    <h2>{{ program.title }}<h2>
     <p>{{ program.summary }}</p>
 </li>
+
+{% else %}
+<p>Aucunes séries trouvées</p>
 {% endfor %}
 </ul>
 {% endblock %}
