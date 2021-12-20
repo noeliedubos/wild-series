@@ -7,11 +7,11 @@
 <ul>
 {% for program in programs %}
 
-<h2> <a href="{{ path("program_show", { id: program.id }) }}" </a> {{ program.id}} / {{ program.title }}</h2>
-<li>
-    <p>{{ program.summary }}</p>
-</li>
-
+    <h2><a href="{{ path("program_show", { id: program.id }) }}"</a> {{ program.id}} / {{ program.title }}</h2>
+        <li>
+            <p>{{ program.summary }}</p>
+        </li>
+        
 {% else %}
 <p>Aucunes séries trouvées</p>
 {% endfor %}
