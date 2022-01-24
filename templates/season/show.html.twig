@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Season{% endblock %}
+
+{% block body %}
+    <h1>Season</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ season.id }}</td>
+            </tr>
+            <tr>
+                <th>Number</th>
+                <td>{{ season.number }}</td>
+            </tr>
+            <tr>
+                <th>Year</th>
+                <td>{{ season.year }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ season.description }}</td>
+            </tr>
+                        <tr>
+                <th>Episodes</th>
+                {% for episode in episodes %}
+                <td>{{ episode.title }}</td>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}
